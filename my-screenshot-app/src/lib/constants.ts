@@ -134,6 +134,17 @@ export const THEMES: Record<string, Theme> = {
     accent: "#B8794A",
     muted: "#65736B",
   },
+  // High-contrast theme for improved readability and accessibility
+  "high-contrast": {
+    id: "high-contrast",
+    name: "High Contrast",
+    bg: "#FFFFFF",
+    bgAlt: "#000000",
+    fg: "#000000",
+    fgAlt: "#FFFFFF",
+    accent: "#0000EE",
+    muted: "#333333",
+  },
 };
 
 export function themeById(themeId: string | undefined): Theme {
