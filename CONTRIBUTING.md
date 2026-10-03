@@ -6,12 +6,14 @@ This repository is intentionally small, but changes still affect real agent beha
 
 - `README.md`: how humans discover and install the skill
 - `skills/app-store-screenshots/SKILL.md`: how coding agents actually behave
+- the editor under `my-screenshot-app/`
 
 ## What Makes a Good Contribution
 
 - Fixes a real workflow problem for people generating App Store screenshots
 - Improves the quality or reliability of the generated output
 - Makes the skill easier to use across agents and environments
+- Improves accessibility (keyboard navigation, contrast, reduced motion, screen-reader labels)
 - Keeps the skill opinionated, but still user-driven
 
 ## Scope Guidelines
@@ -21,6 +23,7 @@ Good fit:
 - Better export reliability
 - Better prompt flow and requirements gathering
 - Stronger copy/design guidance
+- Accessibility improvements (high-contrast themes, focus management, ARIA)
 - Better contributor ergonomics
 - Clearer installation or usage docs
 
@@ -36,6 +39,7 @@ Usually not a fit:
 1. Check open PRs to avoid overlapping work.
 2. Read both `README.md` and `skills/app-store-screenshots/SKILL.md`.
 3. Keep user-facing docs and skill behavior aligned when applicable.
+4. Update `CHANGELOG.md` under the `[Unreleased]` section when relevant.
 
 ## Testing Changes
 
@@ -57,6 +61,12 @@ Validate the skill against at least one realistic scenario:
    - preserves the "screenshots are ads, not docs" principle
    - keeps the generator architecture coherent
    - produces export instructions that are internally consistent
+
+### For editor / accessibility changes
+
+- Test keyboard navigation and focus-visible outlines
+- Check contrast with the `high-contrast` theme
+- Verify reduced-motion preferences do not break core interactions
 
 ### Strongly Recommended
 
@@ -81,3 +91,4 @@ Before submitting, verify:
 - the wording is clear for both humans and agents
 - README and SKILL instructions do not contradict each other
 - the PR description explains why the change is useful
+- CHANGELOG is updated when the change is user-facing
