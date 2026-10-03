@@ -73,7 +73,8 @@ export type ThemeId =
   | "dark-bold"
   | "warm-editorial"
   | "ocean-fresh"
-  | "bloom-roast";
+  | "bloom-roast"
+  | "high-contrast";
 
 export type Theme = {
   id: string;
