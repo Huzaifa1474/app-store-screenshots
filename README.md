@@ -31,24 +31,37 @@ Example screenshots generated with this skill were accepted for [Bloom Coffee Sh
 
 Tip: when capturing source iPhone screenshots, the 6.1-inch simulator is usually the easiest starting point because it reduces manual image adjustment inside the frames.
 
+## Accessibility
+
+This project aims to make both the editor and the generated screenshots more usable:
+
+- High-contrast theme option (`high-contrast`) for clearer text and UI controls
+- Focus-visible styles on interactive elements (buttons, handles, contenteditable regions)
+- Semantic HTML structure and proper `lang` attribute on the document
+- Large, readable default typography for marketing headlines (designed to pass the one-second thumbnail test)
+- Keyboard-friendly controls where possible (Radix primitives provide focus management)
+- Exported images avoid transparency (required by both stores) and use solid backgrounds for better contrast
+
+If you improve accessibility further (screen-reader labels, reduced-motion preferences, etc.), PRs are very welcome — see `CONTRIBUTING.md`.
+
 ## Install
 
 ### Using npx skills
 
 ```bash
-npx skills add ParthJadhav/app-store-screenshots
+npx skills add Huzaifa1474/app-store-screenshots
 ```
 
 Install globally:
 
 ```bash
-npx skills add ParthJadhav/app-store-screenshots -g
+npx skills add Huzaifa1474/app-store-screenshots -g
 ```
 
 Install for a specific agent:
 
 ```bash
-npx skills add ParthJadhav/app-store-screenshots -a claude-code
+npx skills add Huzaifa1474/app-store-screenshots -a claude-code
 ```
 
 This works with Claude Code, Cursor, Windsurf, OpenCode, Codex, and other agents supported by [`skills`](https://github.com/vercel-labs/skills).
@@ -56,7 +69,7 @@ This works with Claude Code, Cursor, Windsurf, OpenCode, Codex, and other agents
 ### Manual install
 
 ```bash
-git clone https://github.com/ParthJadhav/app-store-screenshots ~/.claude/skills/app-store-screenshots
+git clone https://github.com/Huzaifa1474/app-store-screenshots ~/.claude/skills/app-store-screenshots
 ```
 
 ## Usage
@@ -214,7 +227,7 @@ Screenshots are designed at the largest size for each platform and scaled down f
 
 ## Contributing
 
-Contributions are welcome, especially around export reliability, screenshot design guidance, migrations, and cross-agent compatibility. Start with `CONTRIBUTING.md`.
+Contributions are welcome, especially around export reliability, screenshot design guidance, migrations, accessibility, and cross-agent compatibility. Start with `CONTRIBUTING.md`.
 
 ## License
 
