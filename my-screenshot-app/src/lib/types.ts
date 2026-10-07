@@ -55,6 +55,32 @@ export type TextElement = {
   align?: "left" | "center" | "right";
 };
 
+/** How the large slide background is filled. */
+export type BackgroundMode = "theme" | "solid" | "gradient" | "image";
+
+export type BackgroundGradient = {
+  from: string;
+  to: string;
+  /** Degrees, CSS linear-gradient angle. Default 160. */
+  angle?: number;
+};
+
+export type SlideBackground = {
+  mode: BackgroundMode;
+  /** Used when mode === "solid" */
+  solid?: string;
+  /** Used when mode === "gradient" */
+  gradient?: BackgroundGradient;
+  /** Image path or data URL when mode === "image" */
+  image?: string;
+  /** cover | contain for background images. Default cover. */
+  imageFit?: "cover" | "contain";
+  /** 0–1 dark overlay on top of image/gradient for text readability. */
+  overlay?: number;
+  /** Hide decorative accent blobs. Default false. */
+  hideBlobs?: boolean;
+};
+
 export type Slide = {
   id: string;
   layout: SlideLayout;
@@ -62,7 +88,9 @@ export type Slide = {
   headline: LocalizedText;    // multi-line; newlines are intentional, per locale
   screenshot: string;         // path under /screenshots/ — may contain {locale}
   screenshotSecondary?: string; // for two-devices layout — may contain {locale}
-  inverted?: boolean;         // dark background variant
+  inverted?: boolean;         // dark background variant (theme mode)
+  /** Custom background for the large canvas area. Omit = theme gradient. */
+  background?: SlideBackground;
   // Per-element overrides; when present, replaces layout default placement.
   transforms?: Partial<Record<BuiltInElementId, ElementTransform>>;
   textElements?: TextElement[];
