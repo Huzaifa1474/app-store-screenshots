@@ -1,3 +1,1 @@
-"use client";
-// temporary marker - will be replaced
-export {}
+RESTORED_VIA_NEXT
