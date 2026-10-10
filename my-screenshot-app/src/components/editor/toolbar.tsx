@@ -21,6 +21,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   DEVICE_LABEL,
   supportsLandscape,
+  THEMES,
 } from "@/lib/constants";
 import { detectPlatform } from "@/lib/defaults";
 import type { Device, Orientation } from "@/lib/types";
@@ -28,6 +29,8 @@ import type { Device, Orientation } from "@/lib/types";
 type Props = {
   appName: string;
   setAppName: (v: string) => void;
+  themeId: string;
+  setThemeId: (v: string) => void;
   connectedCanvas: boolean;
   setConnectedCanvas: (v: boolean) => void;
   locale: string;
@@ -51,7 +54,6 @@ export function Toolbar(props: Props) {
   const hasLandscape = supportsLandscape(props.device);
   const [resetOpen, setResetOpen] = React.useState(false);
 
-  // Track last device per platform so iOS/Android tabs preserve user's choice.
   const lastByPlatform = React.useRef<{ ios: Device; android: Device }>({
     ios: platform === "ios" ? props.device : "iphone",
     android: platform === "android" ? props.device : "android",
@@ -61,7 +63,6 @@ export function Toolbar(props: Props) {
   }, [platform, props.device]);
 
   const showLocale = props.locales.length > 1;
-
   const deviceLabel = DEVICE_LABEL[props.device];
 
   return (
@@ -95,6 +96,29 @@ export function Toolbar(props: Props) {
         <UnfoldHorizontal className="h-3.5 w-3.5" />
         {props.connectedCanvas ? "Connected" : "Isolated"}
       </Button>
+
+      <Select
+        value={props.themeId}
+        onValueChange={props.setThemeId}
+        disabled={props.busy}
+      >
+        <SelectTrigger className="h-8 w-40 text-xs" title="Theme">
+          <SelectValue placeholder="Theme" />
+        </SelectTrigger>
+        <SelectContent>
+          {Object.values(THEMES).map((t) => (
+            <SelectItem key={t.id} value={t.id}>
+              <span className="flex items-center gap-2">
+                <span
+                  className="inline-block h-3 w-3 rounded-full border"
+                  style={{ background: t.bg }}
+                />
+                {t.name}
+              </span>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
 
       <span aria-hidden className="mx-1 h-5 w-px bg-border" />
 
